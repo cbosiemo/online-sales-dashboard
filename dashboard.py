@@ -8,11 +8,6 @@ from pathlib import Path
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-import plotly
-
-st.write("Streamlit:", st.__version__)
-st.write("Pandas:", pd.__version__)
-st.write("Plotly:", plotly.__version__)
 
 # Professional dashboard colour palette
 NAVY = "#17324D"
