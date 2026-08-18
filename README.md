@@ -2,6 +2,10 @@
 
 An interactive sales analytics dashboard built with **Python, Streamlit, Pandas, and Plotly** to explore online sales performance across products, regions, payment methods, and time.
 
+## Dashboard Preview
+
+![Online Sales Performance Dashboard](dashboard-preview.png)
+
 ## Project Overview
 
 This project transforms online sales transaction data into an interactive dashboard that enables users to explore key sales metrics, identify top-performing products and regions, analyze revenue trends, and filter results dynamically.
@@ -92,6 +96,7 @@ online-sales-dashboard/
 ├── .gitignore
 ├── dashboard.py
 ├── Online_Sales_Data.csv
+├── dashboard-preview.png
 ├── requirements.txt
 └── README.md
 ```
