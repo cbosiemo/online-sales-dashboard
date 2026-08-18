@@ -89,6 +89,7 @@ The interactive dashboard is deployed using Streamlit Community Cloud.
 
 ```text
 online-sales-dashboard/
+├── .gitignore
 ├── dashboard.py
 ├── Online_Sales_Data.csv
 ├── requirements.txt
