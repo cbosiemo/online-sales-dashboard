@@ -9,6 +9,18 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
+# Professional dashboard colour palette
+NAVY = "#17324D"
+TEAL = "#148F8B"
+GOLD = "#D9A441"
+PURPLE = "#7158A6"
+CORAL = "#D96C5F"
+SKY = "#4C8DBB"
+GREEN = "#4E9A65"
+SLATE = "#64748B"
+
+CATEGORY_COLORS = [NAVY, TEAL, GOLD, PURPLE, CORAL, SKY, GREEN, SLATE]
+
 # -----------------------------------------------------------------------------
 # Page configuration
 # -----------------------------------------------------------------------------
@@ -29,12 +41,16 @@ st.markdown(
             padding-bottom: 2rem;
         }
         [data-testid="stMetric"] {
-            border: 1px solid rgba(128, 128, 128, 0.22);
+            border: 1px solid rgba(23, 50, 77, 0.18);
             border-radius: 12px;
             padding: 14px;
+            border-top: 4px solid #148F8B;
         }
         [data-testid="stSidebar"] {
-            border-right: 1px solid rgba(128, 128, 128, 0.18);
+            border-right: 1px solid rgba(23, 50, 77, 0.18);
+        }
+        h1, h2, h3 {
+            color: #17324D;
         }
     </style>
     """,
@@ -178,7 +194,9 @@ with left:
         labels={"Month": "Month", "Total Revenue": "Revenue ($)"},
     )
     trend_fig.update_traces(
-        hovertemplate="%{x|%b %Y}<br>Revenue: $%{y:,.2f}<extra></extra>"
+        line=dict(color=TEAL, width=3),
+        marker=dict(color=GOLD, size=8),
+        hovertemplate="%{x|%b %Y}<br>Revenue: $%{y:,.2f}<extra></extra>",
     )
     trend_fig.update_layout(margin=dict(l=10, r=10, t=20, b=10))
     st.plotly_chart(trend_fig, use_container_width=True)
@@ -190,6 +208,8 @@ with right:
         names="Region",
         values="Total Revenue",
         hole=0.5,
+        color="Region",
+        color_discrete_sequence=CATEGORY_COLORS,
     )
     region_fig.update_traces(
         textposition="inside",
@@ -220,6 +240,8 @@ with left:
         y="Product Category",
         orientation="h",
         text="Total Revenue",
+        color="Product Category",
+        color_discrete_sequence=CATEGORY_COLORS,
         labels={"Total Revenue": "Revenue ($)", "Product Category": "Category"},
     )
     category_fig.update_traces(
@@ -241,6 +263,8 @@ with right:
         x="Total Revenue",
         y="Product Name",
         orientation="h",
+        color="Total Revenue",
+        color_continuous_scale=[[0, "#D7ECEB"], [0.5, TEAL], [1, NAVY]],
         labels={"Total Revenue": "Revenue ($)", "Product Name": "Product"},
     )
     product_fig.update_traces(
@@ -248,6 +272,7 @@ with right:
     )
     product_fig.update_layout(
         showlegend=False,
+        coloraxis_showscale=False,
         margin=dict(l=10, r=10, t=20, b=10),
     )
     st.plotly_chart(product_fig, use_container_width=True)
@@ -269,6 +294,8 @@ with left:
         x="Payment Method",
         y="Total Revenue",
         text="Total Revenue",
+        color="Payment Method",
+        color_discrete_sequence=[PURPLE, GOLD, CORAL, TEAL, SKY],
         labels={"Total Revenue": "Revenue ($)", "Payment Method": "Payment method"},
     )
     payment_fig.update_traces(
