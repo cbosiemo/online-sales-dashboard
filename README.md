@@ -128,4 +128,4 @@ Potential extensions to the dashboard include:
 
 **Cynthia Osiemo**
 
-Data Science | Data Analytics | Research
+Data Science | Data Analytics | Research | Monitoring, Evaluation, Accountability, and Learning
